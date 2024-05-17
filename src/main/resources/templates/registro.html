@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<div class="container" style="border-radius: 100px">
+    <br>
+
+    <style>
+        h4{
+            color: #3c343f;
+        }
+
+        p{
+            color: #3c343f;
+        }
+        a{
+            color: #9a8ba2;
+        }
+        body{
+            background-color: #73647a;
+        }
+    </style>
+    <div class="card bg-light" >
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Crear un usuario</h4>
+
+            <div ><br>
+                <div class="row">
+
+                    <div class="col-12 shadow-lg p-3 mb-5 bg-white rounded" style="width: 600px; border-radius: 20px"><br>
+
+                        <form th:action="@{/api/usuario/registrar}" th:object="${usuario}" method="post"
+                              class="text-center justify-content-center">
+                            <div class="input-group mb-3 justify-content-center">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span><i class="fa fa-keyboard"></i></span>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Nombre de usuario" th:field="*{username}" minlength="5">
+                            </div>
+                            <hr>
+                            <div class="input-group mb-3 justify-content-center">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span><i class="fa fa-key"></i></span>
+                                    </div>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Contraseña" th:field="*{password}" minlength="8"
+                                       id="password" required>
+                            </div>
+                            <div class="input-group mb-3 justify-content-center">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span><i class="fa fa-key"></i></span>
+                                    </div>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Confirmar Contraseña" id="confirm_password" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn " style="color: white; background-color: #9a8ba2">Registrarse en el sistema</button>
+                            <br><br>
+                            <p class="text-center">Si no quieres registrarte, <a href="/home"> ir a la página</a></p>
+                        </form>
+                        <br>
+                    </div>
+
+                </div>
+                <br><br><br><br><br><br><br>
+            </div>
+        </article>
+    </div>
+
+</div>
+
+<br><br>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+<script>
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+
+
+</script>
+<script>
+$(document).ready(function () {
+  $('#mostrar_contrasena').click(function () {
+    if ($('#mostrar_contrasena').is(':checked')) {
+      $('#password').attr('type', 'text');
+      $('#confirm_password').attr('type', 'text');
+    } else {
+      $('#password').attr('type', 'password');
+      $('#confirm_password').attr('type', 'password');
+    }
+  });
+});
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<nav th:replace="fragments :: navigation-shop"></nav>
+<div class="container portfolio">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading">
+                <img src="https://image.ibb.co/cbCMvA/logo.png" />
+            </div>
+        </div>
+    </div>
+    <div class="bio-info">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bio-image">
+                            <img src="https://i.pinimg.com/564x/5f/30/dd/5f30dd9e794a5a509398b45cd38274c2.jpg" alt="image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bio-content">
+                    <h1>Hola, Yo soy <span th:text="${usuario.username}"></span></h1>
+                    <h6>En Hermes Library, nos dedicamos a ser tu destino de confianza para todo
+                        lo relacionado con papelería y suministros escolares. Nuestra misión es
+                        ofrecerte una amplia variedad de productos de alta calidad que inspiren tu
+                        creatividad y faciliten tu organización.</h6>
+                    <p>Así que diviertete y gasta mucho dinero ;)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+
+<style>
+    body{
+		background: linear-gradient(90deg, #e8e8e8 50%, #3d009e 50%);
+	}
+	.portfolio{
+		padding:6%;
+		text-align:center;
+	}
+	.heading{
+		background: #fff;
+		padding: 1%;
+		text-align: left;
+		box-shadow: 0px 0px 4px 0px #545b62;
+	}
+	.heading img{
+		width: 10%;
+	}
+	.bio-info{
+		padding: 5%;
+		background:#fff;
+		box-shadow: 0px 0px 4px 0px #b0b3b7;
+	}
+	.name{
+		font-family: 'Charmonman', cursive;
+		font-weight:600;
+	}
+	.bio-image{
+		text-align:center;
+	}
+	.bio-image img{
+		border-radius:50%;
+        width: 400px;
+        height: 400px;
+	}
+	.bio-content{
+		text-align:left;
+	}
+	.bio-content p{
+		font-weight:600;
+		font-size:30px;
+	}
+</style>
+
+</html>

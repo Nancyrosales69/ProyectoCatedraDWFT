@@ -1,0 +1,78 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 15-05-2024 a las 20:08:53
+-- Versión del servidor: 8.2.0
+-- Versión de PHP: 8.2.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+-- Base de datos: eshop
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla user
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS user;
+CREATE TABLE IF NOT EXISTS user (
+  id int NOT NULL AUTO_INCREMENT,
+  username varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla carrito
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS carrito;
+CREATE TABLE IF NOT EXISTS carrito (
+  id int NOT NULL AUTO_INCREMENT,
+  Userid int NOT NULL,
+  cantidadProducto int NOT NULL,
+  precioTotal int NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY Userid (Userid),
+  FOREIGN KEY (Userid) REFERENCES user (id) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla pedido
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS pedido;
+CREATE TABLE IF NOT EXISTS pedido (
+  id int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla producto
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS producto;
+CREATE TABLE IF NOT EXISTS producto (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(255) NOT NULL,
+  precio int NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla producto_carrito
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS producto_carrito;
+CREATE TABLE IF NOT EXISTS producto_carrito (
+  Productoid int NOT NULL,
+  Carritoid int NOT NULL,
+  UNIQUE KEY Productoid (Productoid),
+  UNIQUE KEY Carritoid (Carritoid),
+  FOREIGN KEY (Productoid) REFERENCES producto (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  FOREIGN KEY (Carritoid) REFERENCES carrito (id) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

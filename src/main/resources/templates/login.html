@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #73647a;
+            color: #3c343f;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            margin: auto;
+            background: white;
+            border-radius: 20px;
+        }
+
+        .form-signin .checkbox.mb-3.text-center {
+            margin-bottom: 0;
+        }
+
+        .form-signin .checkbox.mb-3.text-center label {
+            display: block;
+        }
+        .btn-primary {
+            background-color: #73647a;
+            border-color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #5e546b;
+            border-color: #5e546b;
+        }
+        p{
+            color: #3c343f;
+        }
+        a{
+            color: #9a8ba2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Iniciar Sesion</h2>
+        <br>
+        <br>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+                   autofocus="" >
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                   required="">
+        </p>
+
+        <button class="btn btn-lg btn-primary btn-block"  type="submit">Login</button>
+        <br>
+        <br>
+        <p class="text-center"><a href="/home">página principal</a> </p>
+        <p class="text-center"><a href="/registro">Regístrarse</a> </p>
+
+    </form>
+</div>
+</body>
+</html>

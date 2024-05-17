@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+
+
+<body>
+
+    <nav th:replace="fragments :: navigation-shop"></nav>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="my-4">Shop Name</h1>
+            </div>
+
+            <div class="col-lg-9">
+
+                <div class="card mt-4">
+                    <img class="card-img-top img-fluid" src="https://i.pinimg.com/564x/9c/5a/4e/9c5a4ed17d8c960867ade66ef967112c.jpg" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${producto.nombre}"></h3>
+                        <h4>$<span th:text="${producto.precio}"></span></h4>
+                        <p class="card-text">Esto es una descripcion, adquierelo yayaya</p>
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        4.0 stars
+                    </div>
+
+                    <div class="card-footer">
+                        <form action="#" th:action="@{/api/carrito/crear/{id}(id=${producto.id})}" method="post">
+
+                            <button type="submit" class="btn btn-info">Agregar al carrito</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>
